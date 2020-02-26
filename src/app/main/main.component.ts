@@ -5,6 +5,7 @@ import {CalculatorService} from '../calculator.service';
   selector: 'calc-main',
   template: `
     <div class="calculator">
+      <h1>Calculator</h1>
       <calc-screen [result]="result"></calc-screen>
       <calc-keyboard (keyPressed)="onKeyPressed($event)"></calc-keyboard>
     </div>

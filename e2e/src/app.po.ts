@@ -6,6 +6,6 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('calc-root .content span')).getText() as Promise<string>;
+    return element(by.css('calc-main .calculator h1')).getText() as Promise<string>;
   }
 }

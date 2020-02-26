@@ -5,12 +5,13 @@ describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
+    browser.waitForAngularEnabled(false);
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display calculator title', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('calculator app is running!');
+    expect(page.getTitleText()).toEqual('Calculator');
   });
 
   afterEach(async () => {
