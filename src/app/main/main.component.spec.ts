@@ -22,4 +22,18 @@ describe('MainComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('#onKeyPressed() should update #result with calculation derived from key strokes', () => {
+    expect(component.result).toBe(undefined, 'empty at first');
+    component.onKeyPressed('1');
+    expect(component.result).toBe('1', '1 after onKeyPressed with 1');
+    component.onKeyPressed('2');
+    expect(component.result).toBe('12', '12 after a second onKeyPressed with 2');
+    component.onKeyPressed('+');
+    expect(component.result).toBe('12', '12 after onKeyPressed with +');
+    component.onKeyPressed('3');
+    expect(component.result).toBe('3', '3 after onKeyPressed with 3 after +');
+    component.onKeyPressed('=');
+    expect(component.result).toBe('15', '15 after onKeyPressed with = after 3');
+  });
 });
