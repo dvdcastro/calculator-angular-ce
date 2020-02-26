@@ -7,9 +7,10 @@ It provides a calculator custom element with no view encapsulation oriented towa
 ## Packaging
 
 This will create a package called `ce.js` which will be able to be used with an HTML script tag.
-```
+```shell script
 npm run build && npm run package
 ```
+If you are using a es5 supporting browser, pleas euse `ce-es5.js`.
 
 ## Custom element usage
 
