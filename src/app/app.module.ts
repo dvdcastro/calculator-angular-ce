@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {Injector, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, Injector, NgModule} from '@angular/core';
 
 import { MainComponent } from './main/main.component';
 import { KeyboardComponent } from './keyboard/keyboard.component';
@@ -16,7 +16,8 @@ import {createCustomElement} from '@angular/elements';
     BrowserModule
   ],
   providers: [],
-  entryComponents: [MainComponent]
+  entryComponents: [MainComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {
 
