@@ -5,7 +5,7 @@ import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angul
   template: `
     <div class="calculator-keyboard container-fluid">
       <div class="row" *ngFor="let row of keyboardModel">
-        <button *ngFor="let value of row"
+        <button *ngFor="let value of row" [id]="'calc-keyboard-' + getNiceButtonName(value)"
           type="button" class="col btn btn-light" (click)="processKeyPress(value)">{{value}}</button>
       </div>
     </div>
@@ -54,4 +54,41 @@ export class KeyboardComponent implements OnInit {
     ];
   }
 
+  getNiceButtonName(key: string): string {
+    let result = '';
+    switch (key) {
+      case '0':
+      case '1':
+      case '2':
+      case '3':
+      case '4':
+      case '5':
+      case '6':
+      case '7':
+      case '8':
+      case '9':
+      case 'AC':
+        result = key;
+        break;
+      case '.':
+        result = 'dot';
+        break;
+      case '+':
+        result = 'sum';
+        break;
+      case '-':
+        result = 'subtraction';
+        break;
+      case '÷':
+        result = 'division';
+        break;
+      case '×':
+        result = 'multiplication';
+        break;
+      case '=':
+        result = 'equals';
+        break;
+    }
+    return result;
+  }
 }
