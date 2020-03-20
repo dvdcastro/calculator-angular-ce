@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MainComponent } from './main.component';
 import {KeyboardComponent} from '../keyboard/keyboard.component';
 import {ScreenComponent} from '../screen/screen.component';
+import {HttpClientModule} from '@angular/common/http';
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -10,6 +11,9 @@ describe('MainComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule
+      ],
       declarations: [
         MainComponent,
         KeyboardComponent,
