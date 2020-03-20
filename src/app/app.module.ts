@@ -5,6 +5,7 @@ import { MainComponent } from './main/main.component';
 import { KeyboardComponent } from './keyboard/keyboard.component';
 import { ScreenComponent } from './screen/screen.component';
 import {createCustomElement} from '@angular/elements';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import {createCustomElement} from '@angular/elements';
     ScreenComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   entryComponents: [MainComponent],

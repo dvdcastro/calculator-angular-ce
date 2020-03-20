@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'calc-keyboard',
@@ -20,6 +20,8 @@ import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angul
   encapsulation: ViewEncapsulation.None
 })
 export class KeyboardComponent implements OnInit {
+  @Input() enableFib: boolean;
+
   @Output() keyPressed = new EventEmitter<string>();
 
   keyboardModel: string[][];
@@ -50,8 +52,14 @@ export class KeyboardComponent implements OnInit {
       ],
       [
         '0', '.', '=', '+',
-      ]
+      ],
     ];
+
+    if (this.enableFib) {
+      this.keyboardModel.push([
+        'FIB'
+      ]);
+    }
   }
 
   getNiceButtonName(key: string): string {
@@ -68,6 +76,7 @@ export class KeyboardComponent implements OnInit {
       case '8':
       case '9':
       case 'AC':
+      case 'FIB':
         result = key;
         break;
       case '.':

@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {CalculatorService} from '../calculator.service';
+import {MoodleService} from '../moodle.service';
 
 @Component({
   selector: 'calc-main',
@@ -7,7 +8,7 @@ import {CalculatorService} from '../calculator.service';
     <div class="calculator">
       <h1>Calculator</h1>
       <calc-screen [result]="result"></calc-screen>
-      <calc-keyboard (keyPressed)="onKeyPressed($event)"></calc-keyboard>
+      <calc-keyboard (keyPressed)="onKeyPressed($event)" [enableFib]="enableFib"></calc-keyboard>
     </div>
   `,
   styles: [
@@ -20,14 +21,20 @@ import {CalculatorService} from '../calculator.service';
   encapsulation: ViewEncapsulation.None
 })
 export class MainComponent implements OnInit {
+  @Input() sessKey: string;
+  @Input() wwwRoot: string;
+  @Input() enableFib: boolean;
 
   result: string;
 
   constructor(
-    private calculatorService: CalculatorService
+    private calculatorService: CalculatorService,
+    private moodleService: MoodleService,
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.moodleService.sessKey = this.sessKey;
+    this.moodleService.wwwRoot = this.wwwRoot;
   }
 
   onKeyPressed(key: string) {

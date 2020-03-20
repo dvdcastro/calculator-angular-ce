@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
+import {FibonacciService} from './fibonacci.service';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,9 @@ export class CalculatorService {
 
   output: string;
 
-  constructor() {
+  constructor(
+    private fibonacciService: FibonacciService,
+  ) {
     this.input = '';
     this.currentOperand = NaN;
     this.output = '';
@@ -22,6 +26,15 @@ export class CalculatorService {
   }
 
   public calculate(key: string): Observable<string> {
+    if (key === 'FIB') {
+      return this.fibonacciService.fibonacci(+this.input)
+        .pipe(
+          map(result => {
+            return '' + result.result;
+          })
+        );
+    }
+
     switch (key) {
       case '0':
       case '1':
